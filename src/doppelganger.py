@@ -70,11 +70,12 @@ def doppelganger(alternative_file_extension,
     :param od: A shortened option for ouput_directory.
 
     """
+
+    dot_alternative_file_extension = "." + alternative_file_extension
     target_dirpath = "."
     output_dirpath = "."
-    target_file_list = []
     dot_original_file_extension = ""
-    dot_alternative_file_extension = "." + alternative_file_extension
+    target_file_list = []
 
     for tmp_target_directory in [target_directory, td]:
         if tmp_target_directory != "":
@@ -83,10 +84,6 @@ def doppelganger(alternative_file_extension,
                 target_dirpath = os.path.expanduser(target_dirpath)
             else:
                 sys.exit()
-
-    for tmp_original_file_extension in [original_file_extention, ofe]:
-        if tmp_original_file_extension != "":
-            dot_original_file_extension = "." + tmp_original_file_extension
 
     for tmp_output_directory in [output_directory, od]:
         if tmp_output_directory != "":
@@ -97,6 +94,10 @@ def doppelganger(alternative_file_extension,
                 output_dirpath = os.path.expandvars(tmp_output_directory)
                 output_dirpath = os.path.expanduser(output_dirpath)
                 os.makedirs(output_dirpath, exist_ok=True)
+
+    for tmp_original_file_extension in [original_file_extention, ofe]:
+        if tmp_original_file_extension != "":
+            dot_original_file_extension = "." + tmp_original_file_extension
 
     target_file_list = [
         file for file in os.listdir(target_dirpath)
