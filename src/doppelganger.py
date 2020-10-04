@@ -131,12 +131,15 @@ def doppelganger(alternative_file_extension,
         ]
 
     print("Start creating doppelganger.")
-    for file in tqdm(target_file_list):
-        output_file = os.path.join(output_dirpath,
-                                   file + dot_alternative_file_extension)
-        Path(output_file).touch()
-        print("Created : " + output_file)
-    print("Complete!")
+    if (len(target_file_list) > 0):
+        for file in tqdm(target_file_list):
+            output_file = os.path.join(output_dirpath,
+                                       file + dot_alternative_file_extension)
+            Path(output_file).touch()
+            print("Created : " + output_file)
+        print("Complete!")
+    else:
+        print("Not found target file.")
 
 
 def isExistsDir(dirpath, errMsg=True):
