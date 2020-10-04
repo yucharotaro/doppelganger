@@ -71,6 +71,21 @@ def doppelganger(alternative_file_extension,
 
     """
 
+    if os.sep in alternative_file_extension:
+        print("You can not include OS separator "
+              "in alternative_file_extension.")
+        sys.exit()
+
+    if os.extsep in alternative_file_extension:
+        print("You can not include OS file extension "
+              "in alternative_file_extension.")
+        sys.exit()
+
+    if os.pathsep in alternative_file_extension:
+        print("You can not include OS path separator "
+              "in altarnative_file_extension.")
+        sys.exit()
+
     dot_alternative_file_extension = "." + alternative_file_extension
     target_dirpath = "."
     output_dirpath = "."
