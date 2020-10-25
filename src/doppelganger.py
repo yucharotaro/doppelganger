@@ -93,7 +93,7 @@ def doppelganger(alternative_file_extension,
     target_file_list = []
 
     for tmp_target_directory in [target_directory, td]:
-        if tmp_target_directory != "":
+        if tmp_target_directory:
             if isExistsDir(tmp_target_directory):
                 target_dirpath = os.path.expandvars(tmp_target_directory)
                 target_dirpath = os.path.expanduser(target_dirpath)
@@ -101,7 +101,7 @@ def doppelganger(alternative_file_extension,
                 sys.exit()
 
     for tmp_output_directory in [output_directory, od]:
-        if tmp_output_directory != "":
+        if tmp_output_directory:
             if isExistsDir(tmp_output_directory, errMsg=False):
                 output_dirpath = os.path.expandvars(tmp_output_directory)
                 output_dirpath = os.path.expanduser(output_dirpath)
@@ -111,7 +111,7 @@ def doppelganger(alternative_file_extension,
                 os.makedirs(output_dirpath, exist_ok=True)
 
     for tmp_original_file_extension in [original_file_extention, ofe]:
-        if tmp_original_file_extension != "":
+        if tmp_original_file_extension:
             dot_original_file_extension = "." + tmp_original_file_extension
 
     target_file_list = [
@@ -120,7 +120,7 @@ def doppelganger(alternative_file_extension,
     ]
     tmp_target_file_list = target_file_list
 
-    if dot_original_file_extension != "":
+    if dot_original_file_extension:
         target_file_list = [
             os.path.splitext(file)[0] for file in tmp_target_file_list
             if os.path.splitext(file)[1] == dot_original_file_extension
@@ -143,7 +143,7 @@ def doppelganger(alternative_file_extension,
 
 
 def isExistsDir(dirpath, errMsg=True):
-    if dirpath != "":
+    if dirpath:
         tmp_dirpath = os.path.expandvars(dirpath)
         tmp_dirpath = os.path.expanduser(tmp_dirpath)
         if os.path.exists(tmp_dirpath) is not True:
